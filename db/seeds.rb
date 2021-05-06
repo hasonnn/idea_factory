@@ -8,6 +8,7 @@
 
 Idea.destroy_all
 User.destroy_all
+Review.destroy_all
 
 PASSWORD = 'supersecret'
 10.times do 
@@ -25,16 +26,23 @@ PASSWORD = 'supersecret'
 100.times do
     created_at = Faker::Date.backward(days:365 * 5)
 
-    Idea.create(
+    i = Idea.create(
         title: Faker::TvShows::GameOfThrones.character,
         body: Faker::Lorem.sentence(word_count: 55),
         created_at: created_at,
         updated_at: created_at,
         user: users.sample
     )
+    if i.persisted?
+        i.reviews = rand(1..10).times.map do
+            Review.new(body: Faker::GreekPhilosophers.quote, user: users.sample)
+        end
+    end
 end
 
 ideas = Idea.all
+reviews = Review.all
 
 puts "Generated #{ideas.count} ideas!"
 puts "Generated #{users.count} users!"
+puts "Generated #{reviews.count} reviews!"

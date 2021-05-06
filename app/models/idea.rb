@@ -3,4 +3,6 @@ class Idea < ApplicationRecord
     validates :body, presence: true
 
     belongs_to :user
+
+    has_many :reviews, dependent: :destroy
 end
