@@ -9,6 +9,7 @@
 Idea.destroy_all
 User.destroy_all
 Review.destroy_all
+Like.destroy_all
 
 PASSWORD = 'supersecret'
 10.times do 
@@ -37,12 +38,15 @@ PASSWORD = 'supersecret'
         i.reviews = rand(1..10).times.map do
             Review.new(body: Faker::GreekPhilosophers.quote, user: users.sample)
         end
+        i.likers = users.shuffle.slice(0, rand(users.count))
     end
 end
 
 ideas = Idea.all
 reviews = Review.all
+likes = Like.all
 
 puts "Generated #{ideas.count} ideas!"
 puts "Generated #{users.count} users!"
 puts "Generated #{reviews.count} reviews!"
+puts "Generated #{likes.count} reviews!"
