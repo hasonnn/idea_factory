@@ -8,11 +8,11 @@
 
 Idea.destroy_all
 
-50.times do
+100.times do
     created_at = Faker::Date.backward(days:365 * 5)
 
     Idea.create(
-        title: Faker::GreekPhilosophers
+        title: Faker::TvShows::GameOfThrones.character,
         body: Faker::Lorem.sentence(word_count: 55)
     )
 end
