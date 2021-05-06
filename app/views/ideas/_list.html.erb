@@ -2,6 +2,7 @@
     <div>
         <h2><%= link_to idea.title, idea_path(idea) %></h2>
         <p><%= idea.body %></p>
+        <h4>Created by: <%= idea.user&.full_name || 'DELETED'%></h4>
     </div>
     <hr>
 <% end %>
