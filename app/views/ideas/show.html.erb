@@ -1,21 +1,26 @@
-<h1><%= @idea.title %></h1>
-<p><%= @idea.body %></p>
-<h4>Created by: <%= @idea.user&.full_name || 'DELETED'%></h4>
-<p><%= @idea.created_at %></p>
+<div class="padding">
+    <h1><%= @idea.title %></h1> <br>
+    <p><%= @idea.body %></p> <br>
+    <h5>Created by: <%= @idea.user&.full_name || 'DELETED'%></h5>
+    <p><%= @idea.created_at %></p>
 
-<% if can?(:crud,@idea)%>
-<%= link_to "Edit", edit_idea_path(@idea)%>
-<%= link_to "Delete", idea_path(@idea), method: :delete, data: { confirm: "Are you sure?" } %>
-<% end %> 
+    <% if can?(:crud,@idea)%>
+    <%= link_to "Edit", edit_idea_path(@idea)%>
+    <%= link_to "Delete", idea_path(@idea), method: :delete, data: { confirm: "Are you sure?" } %>
+    <% end %> 
+
 
 <%= render 'reviews/form'%>
 <br> 
-<% @idea.reviews.each do |review| %>
+<h4>Reviews:</h4> 
+<br>
+<% @reviews.each do |review| %>
 <%= review.body %>
 
 <% if can? :crud, review %>
-<%= link_to("Delete Review", idea_review_path(@idea, review), method: :delete, data:{confirm: 'Are you sure?'})%>
+<%= link_to("| Delete Review", idea_review_path(@idea, review), method: :delete, data:{confirm: 'Are you sure?'})%>
 <% end %>
 <hr>
 
 <% end %>
+</div>

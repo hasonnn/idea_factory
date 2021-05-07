@@ -1,13 +1,12 @@
 <%= form_for @idea do |f| %>
-    <br>
-    <div>
+    <div class="padding">
         <%= f.label :title %>
         <%= f.text_field :title %>
-    </div>
-    <div>
+        <br>
         <%= f.label :body %>
         <%= f.text_field :body %>
     </div>
-    <br>
-    <%= f.submit %>
+    <div class="padding">
+        <%= f.submit %>
+    </div>
 <% end %>

@@ -1,22 +1,33 @@
-<nav>
-  <a href="/">Idea Factory</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">Idea Factory</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-  <div>
-    <ul>
-      <li>
-        <a href="/">Home</a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li>
-        <%= link_to 'New Idea', new_idea_path %>
+      <li class="nav-item">
+        <%= link_to 'New Idea', new_idea_path, class:"nav-link" %>
       </li>
-      <% if user_signed_in?%>
-        Hello <%= current_user.full_name %>! | 
-        <%= link_to 'Sign Out', session_path, method: :delete, data:{confirm: 'Are you sure you want to log out?'} %>
+
+      <% if user_signed_in? %>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Hello <%= current_user.full_name %>!</a> 
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Sign Out', session_path, method: :delete, data:{confirm: 'Are you sure you want to sign out?'},class:"nav-link" %>
+      </li>
       <% else %>
-        <%= link_to 'Sign In', new_session_path  %> | 
-        <%= link_to 'Sign Up', new_user_path  %> 
-      <% end %>  
+      <li class="nav-item">
+        <%= link_to 'Sign In', new_session_path, class:"nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Sign Up', new_user_path, class:"nav-link" %>  
+      </li>
+      <% end %> 
     </ul>
   </div>
-  <hr>
 </nav>  

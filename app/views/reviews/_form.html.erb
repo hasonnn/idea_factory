@@ -1,16 +1,17 @@
 <%= form_with(model:[@idea, @review], local:true) do |f| %>
 <% if @review.errors.full_messages.each do |msg| %>
-<ul>
-    <li> <%= msg %></li>
-</ul>
+    <ul> 
+        <li> <%= msg %></li>
+    </ul>
     <% end %>
 <% end %>
 
 <br>
-<p>Leave a review!</p>
+<h4>Leave a review!</h4>
 <div>
     <%= f.text_area(:body, cols: 50, rows:5, placeholder: 'What is your review?') %>
 </div>
-
+<div>
     <%= f.submit %>
+</div>
 <% end %>

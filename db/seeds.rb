@@ -24,7 +24,7 @@ PASSWORD = 'supersecret'
   end
   users = User.all
 
-100.times do
+30.times do
     created_at = Faker::Date.backward(days:365 * 5)
 
     i = Idea.create(
@@ -49,4 +49,4 @@ likes = Like.all
 puts "Generated #{ideas.count} ideas!"
 puts "Generated #{users.count} users!"
 puts "Generated #{reviews.count} reviews!"
-puts "Generated #{likes.count} reviews!"
+puts "Generated #{likes.count} likes!"
