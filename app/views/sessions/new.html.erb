@@ -1,0 +1,15 @@
+<div class="padding">
+    <h1>Sign In</h1> <br>
+
+    <%= form_with url:session_path,local: true do |f| %>
+        <div>
+            <%= f.label :email  %>
+            <%= f.email_field :email %> 
+        </div> 
+        <div>
+            <%= f.label :password  %> 
+            <%= f.password_field :password  %> 
+        </div> <br>
+        <%= f.submit 'Sign In'  %> 
+    <% end %>
+</div>
