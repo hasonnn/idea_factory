@@ -16,6 +16,7 @@
 <br>
 <% @reviews.each do |review| %>
 <%= review.body %>
+<small>| Reviewed by: <%= review.user&.full_name || 'DELETED' %></small>
 
 <% if can? :crud, review %>
 <%= link_to("| Delete Review", idea_review_path(@idea, review), method: :delete, data:{confirm: 'Are you sure?'})%>
